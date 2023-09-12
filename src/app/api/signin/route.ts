@@ -9,7 +9,6 @@ interface RequestBody {
 
 export async function POST(request: Request) {
   const body: RequestBody = await request.json();
-
   const user = await prisma.user.findFirst({
     where: {
       email: body.username,
@@ -18,6 +17,11 @@ export async function POST(request: Request) {
   if (user && (await bcrypt.compare(body.password, user.password))) {
     const { password, ...userWithoutPass } = user;
     const accessToken = signJwtAccessToken(userWithoutPass);
-    return new Response(JSON.stringify(userWithoutPass));
+
+    const result = {
+      ...userWithoutPass,
+      accessToken,
+    };
+    return new Response(JSON.stringify(result));
   } else return new Response(JSON.stringify(null));
 }

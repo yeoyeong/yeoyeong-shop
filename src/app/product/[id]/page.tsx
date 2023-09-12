@@ -1,6 +1,7 @@
 "use client";
 import { useParams } from "next/navigation";
-import RelatedProducts from "../components/RelatedProducts";
+import ProductGustation from "@/app/components/ProductGustation";
+
 export default function Product() {
   const { id } = useParams();
   console.log(id);
@@ -24,7 +25,12 @@ export default function Product() {
       <section>
         <div></div>
       </section>
-      <RelatedProducts />
+      <ProductGustation
+        product_type={{
+          title: "관련 상품 더보기",
+          id: "more_related_products",
+        }}
+      />
       <style jsx>{`
         .container {
           display: flex;
@@ -42,14 +48,14 @@ export default function Product() {
         }
         .info_image div {
           width: 19%;
-          height: 140px;
+          padding-bottom: 19%;
           background-color: gray;
           display: inline-block;
           margin-right: 1.25%;
         }
         .info_image div:first-child {
           width: 100%;
-          height: 460px;
+          padding-bottom: 100%;
           background-color: red;
           margin-bottom: 20px;
           margin-right: 0;

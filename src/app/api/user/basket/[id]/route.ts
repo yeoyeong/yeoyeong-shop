@@ -14,8 +14,7 @@ export async function GET(
   }
 
   const id = Number(params.id);
-
-  const userPosts = await prisma.post.findMany({
+  const userPosts = await prisma.basket.findMany({
     where: {
       authorId: id,
     },
@@ -28,5 +27,7 @@ export async function GET(
       },
     },
   });
+  console.log(id);
+  console.log(userPosts);
   return new Response(JSON.stringify(userPosts));
 }

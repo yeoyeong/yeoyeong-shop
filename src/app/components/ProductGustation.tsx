@@ -1,9 +1,17 @@
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 
-export default function Pants() {
+interface Props {
+  product_type: {
+    title: string;
+    id: string;
+  };
+}
+export default function ProductGustation({ product_type }: Props) {
+  const router = useRouter();
   return (
     <section>
-      <h3 className="sub_title">하의</h3>
+      <h3 className="sub_title">{product_type.title}</h3>
       <div className="contants">
         <Link href={`product/${"ID"}`}>
           <div></div>
@@ -18,7 +26,12 @@ export default function Pants() {
           <div></div>
         </Link>
       </div>
-      <button className="more">{"더보기 >"}</button>
+      <button
+        className="more"
+        onClick={() => router.push(`shop/${product_type.id}`)}
+      >
+        {"더보기 >"}
+      </button>
       <style jsx>{`
         section {
           padding-top: 141px;
@@ -37,11 +50,8 @@ export default function Pants() {
           margin: 30px 0;
         }
         .contants div {
+          display: block;
           height: 240px;
-           {
-            /* width: 340px;
-          height: 396px; */
-          }
           background-color: var(--gray);
         }
         .more {
@@ -53,6 +63,15 @@ export default function Pants() {
           font-size: 18px;
           margin: 0 auto;
           cursor: pointer;
+        }
+        @media (max-width: 693px) {
+          .contants {
+            grid-template-columns: repeat(auto-fit, minmax(90%, 90%));
+          }
+          .contants div {
+            height: auto;
+            padding-bottom: 80%;
+          }
         }
       `}</style>
     </section>

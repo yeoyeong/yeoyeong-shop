@@ -4,20 +4,22 @@ import CredentialsProvider from "next-auth/providers/credentials";
 const handler = NextAuth({
   providers: [
     CredentialsProvider({
-      name: "Credentials",
+      name: "credentials",
       //Form
       credentials: {
         username: {
-          label: "이메일",
-          type: "text",
-          placeholder: "이메일 주소 입력 요망",
+          type: "email",
+          placeholder: "Email",
         },
-        password: { label: "비밀번호", type: "password" },
+        password: {
+          type: "password",
+          placeholder: "password",
+        },
       },
 
       //authorize 함수에서 이메일과 패스워드 부분을 체크해서, 맞으면 user 객체를 리턴하고 틀리면 null을 리턴하는 구조입니다.
       async authorize(credentials, req) {
-        const res = await fetch(`${process.env.NEXTAUTH_URL}/api/login`, {
+        const res = await fetch(`${process.env.NEXTAUTH_URL}/api/signin`, {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
@@ -28,6 +30,7 @@ const handler = NextAuth({
           }),
         });
         const user = await res.json();
+
         if (user) {
           return user;
         } else {
@@ -37,6 +40,7 @@ const handler = NextAuth({
     }),
   ],
   callbacks: {
+    //user와 token을 같은 항목으로 만들고 리턴
     async jwt({ token, user }) {
       return { ...token, ...user };
     },
@@ -45,6 +49,9 @@ const handler = NextAuth({
       session.user = token as any;
       return session;
     },
+  },
+  pages: {
+    signIn: "/login",
   },
 });
 

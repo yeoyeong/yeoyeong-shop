@@ -13,14 +13,24 @@ datasource db {
 //@default(autoincrement()) 자동으로 하나씩 증가
 //@unique 한 테이블에 하나
 model User {
-  id       Int     @id @default(autoincrement())
-  email    String  @unique
+  id       Int      @id @default(autoincrement())
+  email    String   @unique
   name     String?
   password String
   posts    Post[]
+  Basket   Basket[]
 }
 
 model Post {
+  id        Int     @id @default(autoincrement())
+  title     String
+  content   String?
+  published Boolean @default(false)
+  author    User    @relation(fields: [authorId], references: [id])
+  authorId  Int
+}
+
+model Basket {
   id        Int     @id @default(autoincrement())
   title     String
   content   String?

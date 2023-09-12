@@ -6,54 +6,66 @@ import Link from "next/link";
 import { useParams, usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import SignInButton from "@/app/components/SignInButton";
+import { useSession } from "next-auth/react";
 export default function Header() {
   const id = usePathname();
+  const { data: session } = useSession();
+  console.log();
   const [type, setType] = useState(true);
-  console.log(id);
   useEffect(() => {
     if (id === "/login") setType(false);
     else setType(true);
   }, [id]);
   return (
-    <div className="container">
+    <header>
       {type && (
         <>
-          <div>
-            <h1 className="title">YEOYEONG</h1>
-            <ul className="top_menu">
+          <div className="container">
+            <div>
+              <h1 className="title">
+                <Link href="/" style={{ color: "#b5cfdb" }}>
+                  YEOYEONG
+                </Link>
+              </h1>
+              <ul className="top_menu">
+                <li>
+                  <SignInButton />
+                </li>
+                <li>
+                  <Link href="/signup">회원가입</Link>
+                </li>
+                <li>
+                  <Link href={`/user/basket/${session?.user.id}`}>
+                    장바구니
+                  </Link>
+                </li>
+                <li>
+                  <Image
+                    src={HEARD_ICON}
+                    width={16}
+                    height={16}
+                    alt="찜 아이콘"
+                  />
+                </li>
+                <li>
+                  <Image
+                    src={SEARCH_ICON}
+                    width={16}
+                    height={16}
+                    alt="검색 아이콘"
+                  />
+                </li>
+              </ul>
+            </div>
+            <ul className="nav">
               <li>
-                <SignInButton />
+                <Link href="/shop">SHOP</Link>
               </li>
               <li>
-                <Link href="/signup">회원가입</Link>
-              </li>
-              <li>
-                <Link href="/shopping_basket">장바구니</Link>
-              </li>
-              <li>
-                <Image
-                  src={HEARD_ICON}
-                  width={16}
-                  height={16}
-                  alt="찜 아이콘"
-                />
-              </li>
-              <li>
-                <Image
-                  src={SEARCH_ICON}
-                  width={16}
-                  height={16}
-                  alt="검색 아이콘"
-                />
+                <Link href="/about">ABOUT</Link>
               </li>
             </ul>
           </div>
-
-          <ul className="nav">
-            <li>SHOP</li>
-            <li>ABOUT</li>
-          </ul>
-
           <style jsx>{`
             .container {
               display: flex;
@@ -100,6 +112,6 @@ export default function Header() {
           `}</style>
         </>
       )}
-    </div>
+    </header>
   );
 }

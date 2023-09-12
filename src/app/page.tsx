@@ -1,17 +1,21 @@
 "use client";
-
-import Top from "@/app/components/Top";
-import Hats from "./components/Hats";
-import Pants from "./components/Pants";
-import Header from "@/components/Header";
+import Image from "next/image";
+import ProductGustation from "./components/ProductGustation";
 
 export default function Home() {
   return (
     <div className="container">
-      <article className="visual_area"></article>
-      <Top />
-      <Pants />
-      <Hats />
+      <article className="visual_area">
+        <Image
+          src="/main-visual_img02.jpeg"
+          width={1930}
+          height={750}
+          alt="옷 사진"
+        />
+      </article>
+      <ProductGustation product_type={{ title: "상의", id: "top" }} />
+      <ProductGustation product_type={{ title: "하의", id: "pants" }} />
+      <ProductGustation product_type={{ title: "모자", id: "hat" }} />
       <style jsx>{`
         .container {
           display: flex;
@@ -25,6 +29,16 @@ export default function Home() {
           height: 660px;
           background-color: var(--gray);
           margin: 0 auto;
+          overflow: scroll;
+          overflow-y: hidden;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        }
+        @media (min-width 1400px) {
+          .visual_area {
+            overflow: hidden;
+          }
         }
       `}</style>
     </div>

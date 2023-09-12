@@ -1,13 +1,44 @@
 "use client";
 import Image from "next/image";
 import Arrow from "../../../public/arrow-right-white.svg";
+import { useRef } from "react";
+import { signIn } from "next-auth/react";
 export default function Login() {
+  const emailRef = useRef(null);
+  const passwordRef = useRef(null);
+
+  const handleSubmit = async (e: any) => {
+    e.preventDefault();
+    await signIn("credentials", {
+      username: emailRef.current,
+      password: passwordRef.current,
+      redirect: true,
+      callbackUrl: "/",
+    });
+  };
+
   return (
     <div className="container">
-      <form>
+      <form onSubmit={handleSubmit}>
         <h2>LOGIN</h2>
-        <input type="text" placeholder="Username" />
-        <input type="password" placeholder="Password" />
+        <input
+          type="email"
+          id="emai"
+          name="email"
+          placeholder="Email"
+          ref={emailRef}
+          autoFocus={true}
+          onChange={(e: any) => {
+            emailRef.current = e.target.value;
+          }}
+        />
+        <input
+          type="password"
+          placeholder="Password"
+          name="password"
+          ref={passwordRef}
+          onChange={(e: any) => (passwordRef.current = e.target.value)}
+        />
         <button type="submit">
           <Image src={Arrow} width={15} alt="화살표" />
         </button>
@@ -29,7 +60,7 @@ export default function Login() {
           width: 375px;
           height: 660px;
           background-color: #ffffff36;
-          padding: 0 1%;
+          padding: 0 2%;
           border-radius: 30px;
         }
         form > h2 {
@@ -59,6 +90,7 @@ export default function Login() {
           width: 50px;
           height: 50px;
           background-color: #b5cfdb;
+          cursor: pointer;
         }
       `}</style>
     </div>
