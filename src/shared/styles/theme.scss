@@ -1,0 +1,57 @@
+// 공통색상선언
+$color-light: (
+  "main": #0057ff,
+  "light-blue": #97bbff,
+  "sky-blue": hsl(187, 81%, 75%),
+  "font": #000000,
+  "background": #ffffff,
+  "black": #000000,
+  "light-black": #151515,
+  "translucent-black": rgba(0, 0, 0, 0.6),
+  "gray": #f1f1f1,
+  "gray-200": #434343,
+  "light-gray-100": #bababa,
+  "light-gray-200": #acacac,
+
+  "red": #af0000,
+  "white": #ffffff,
+  "light-red": #c68181,
+);
+$color-dark: (
+  "main": #0057ff,
+  "light-blue": #97bbff,
+  "sky-blue": hsl(187, 81%, 75%),
+  "font": #ffffff,
+  "background": #000000,
+  "gray": #f1f1f1,
+  "gray-200": #434343,
+  "light-gray-100": #bababa,
+  "light-gray-200": #acacac,
+  "red": #af0000,
+  "black": #000000,
+  "light-black": #151515,
+  "translucent-black": rgba(0, 0, 0, 0.6),
+  "white": #ffffff,
+  "light-red": #c68181,
+);
+
+// 모드별 색상
+.App {
+  @each $name, $color in $color-light {
+    --#{$name}: #{$color};
+  }
+}
+.App.dark {
+  @each $name, $color in $color-dark {
+    --#{$name}: #{$color};
+  }
+}
+// // 실제 class에 적용
+// .App {
+//   background-color: var(--main);
+//   color: var(--sub);
+// }
+// .App.dark {
+//   background-color: var(--main);
+//   color: var(--sub);
+// }

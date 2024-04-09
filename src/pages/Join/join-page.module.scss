@@ -1,0 +1,78 @@
+.join_form_wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  height: calc(100% - 44px);
+  //   height: inherit;
+  padding-top: 160px;
+}
+
+.input_wrap {
+  width: 80%;
+  height: 80px;
+  text-align: center;
+  position: relative;
+  p {
+    position: absolute;
+    top: 16px;
+    left: 44px;
+    font-family: Libre;
+    font-size: 12px;
+    color: var(--gray-200);
+  }
+  input[type="text"],
+  input[type="password"] {
+    height: 80px;
+    width: 100%;
+    border: 1px solid var(--light-gray-100);
+    padding: 30px 44px 0 44px;
+    // padding-top: 30px;
+    border-radius: 50px;
+  }
+}
+.input_wrap:first-child {
+  //   margin-bottom: 20px;
+}
+
+.navigate_btn_wrap {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 30px;
+  gap: 16px;
+}
+.next_btn {
+  width: 80%;
+  height: 60px;
+  border-radius: 50px;
+  border: none;
+  cursor: pointer;
+  background-color: var(--main);
+  color: var(--white);
+  font-weight: 700;
+  font-family: Libre;
+  //   margin-bottom: 30px;
+}
+.prev_btn {
+  width: 80%;
+  height: 60px;
+  border-radius: 50px;
+  border: none;
+  cursor: pointer;
+  background-color: var(--light-blue);
+  color: var(--white);
+  font-weight: 700;
+  font-family: Libre;
+  //   margin-bottom: 30px;
+}
+
+// 비밀번호
+.password_box {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}

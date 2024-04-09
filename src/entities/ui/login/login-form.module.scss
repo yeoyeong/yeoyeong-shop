@@ -1,0 +1,64 @@
+.login_form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  // justify-content: center;
+  padding-top: 90px;
+}
+
+.input_wrap {
+  width: 80%;
+  height: 80px;
+  text-align: center;
+  position: relative;
+  p {
+    position: absolute;
+    top: 16px;
+    left: 44px;
+    font-family: Libre;
+    font-size: 12px;
+    color: var(--gray-200);
+  }
+  input[type="text"],
+  input[type="password"] {
+    height: 80px;
+    width: 100%;
+    border: 1px solid var(--light-gray-100);
+    padding: 30px 44px 0 44px;
+    // padding-top: 30px;
+    border-radius: 50px;
+  }
+}
+.input_wrap:first-child {
+  margin-bottom: 20px;
+}
+
+.login_btn {
+  width: 80%;
+  height: 50px;
+  border-radius: 50px;
+  border: none;
+  cursor: pointer;
+  background-color: var(--main);
+  color: var(--white);
+  font-weight: 700;
+  font-family: Libre;
+  margin-top: 40px;
+}
+
+.password_forgot_link {
+  color: #363636;
+  font-family: Libre;
+  margin-top: 22px;
+}
+
+.signup_link {
+  width: 80%;
+  height: 50px;
+  border-radius: 50px;
+  border: none;
+  background-color: transparent;
+  border: 1px solid #2e2e2e;
+  margin-top: 66px;
+  cursor: pointer;
+}

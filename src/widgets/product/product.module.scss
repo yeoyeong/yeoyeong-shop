@@ -1,0 +1,52 @@
+.product_wrap {
+  display: flex;
+  justify-content: center;
+  padding: 16px 80px;
+  gap: 20px;
+  //   width: 100%;
+  //   align-items: center;
+
+  //   padding: 20px;
+  //   column-count: var(--windowWidth); // CSS 변수 사용
+  //   column-gap: 1em;
+
+  /* display: grid;
+  flex-flow: row wrap;
+  grid-template-columns: repeat(${(props) => props.$windowWidth}, 1fr);
+  grid-template-rows: masonry; */
+  //   column-count: ${(props) => props.$windowWidth};
+}
+.items_line {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  //   gap: 30px;
+}
+
+.item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #eee;
+  border-radius: 40px;
+  margin-bottom: 6px;
+  overflow: hidden;
+  //   font-size: 40px;
+  //   font-weight: 700;
+  //   color: #fff;
+}
+
+.item_price {
+  margin-bottom: 30px;
+  text-align: center;
+  overflow: hidden;
+  font-size: 14px;
+}
+
+.item_price_skeleton {
+  width: 70px;
+  height: 13px;
+  margin: 0 auto;
+  margin-bottom: 30px;
+  background-color: var(--light-gray-200);
+}
