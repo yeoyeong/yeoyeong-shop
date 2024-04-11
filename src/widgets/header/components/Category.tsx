@@ -1,7 +1,7 @@
 import { categoryData } from "@src/shared/data/categoryData";
 import { Link, useLocation } from "react-router-dom";
 import styles from "@src/widgets/header/Header.module.scss";
-import { useCallback, useMemo } from "react";
+import { useCallback } from "react";
 const HeaderCategory = () => {
   const { pathname, search } = useLocation();
   const params = new URLSearchParams(window.location.search);

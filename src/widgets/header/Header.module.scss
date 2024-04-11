@@ -31,6 +31,7 @@
   align-items: center;
   width: 100%;
   padding-bottom: 16px;
+  z-index: 10;
   h1 {
     margin: 15px 0;
     a {
@@ -143,5 +144,8 @@
   }
   button:hover {
     opacity: 0.6;
+  }
+  button:focus {
+    transform: scale(0.9);
   }
 }

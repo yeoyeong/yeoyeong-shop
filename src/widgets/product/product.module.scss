@@ -23,7 +23,7 @@
   //   gap: 30px;
 }
 
-.item {
+.item_skeleton {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -35,7 +35,114 @@
   //   font-weight: 700;
   //   color: #fff;
 }
+.item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  // background-color: #eee;
+  border-radius: 40px;
+  margin-bottom: 6px;
+  > img {
+    border-radius: 40px;
+  }
+  //   font-size: 40px;
+  //   font-weight: 700;
+  //   color: #fff;
+  position: relative;
+  cursor: pointer;
+}
+.item:hover {
+  .item_hover {
+    opacity: 1;
+  }
+}
 
+.item_hover {
+  position: absolute;
+  top: 0;
+  display: flex;
+  opacity: 0;
+  transition: 0.2s;
+  // align-items: center;
+  flex-direction: column;
+  // justify-content: center;
+  min-height: 100%;
+  width: 100%;
+  padding: 26px 7.65% 46px 7.65%;
+  background-color: #fffffff5;
+  // background-color: #ffffff;
+  box-shadow: rgba(255, 255, 255, 0.1) 0px 1px 1px 0px inset,
+    rgba(50, 50, 93, 0.25) 0px 50px 100px -20px,
+    rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
+  border-radius: 38px;
+}
+.icon_wrap {
+  display: flex;
+  gap: 2px;
+  li {
+    padding: 2px 6px;
+    font-size: 10px;
+  }
+  margin-bottom: 12px;
+}
+.new_icon {
+  border: 1px solid var(--black);
+  font-family: Libre;
+}
+.best_icon {
+  background-color: #e9b281;
+  color: var(--white);
+}
+.popular_icon {
+  background-color: #b7d38e;
+  color: var(--white);
+}
+.item_name {
+  font-size: 14px;
+  // overflow: hidden; // 을 사용해 영역을 감출 것
+  // text-overflow: ellipsis; // 로 ... 을 만들기
+  // white-space: nowrap; // 아래줄로 내려가는 것을 막기위해
+  // word-break: break-all;
+  width: 100%;
+  // height: 20px;
+  margin-bottom: 20px;
+}
+
+.sub_title {
+  color: var(--main);
+  font-family: Libre;
+  margin-bottom: 4px;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.size_wrap {
+  display: flex;
+  gap: 4px;
+  li {
+    font-size: 10px;
+    padding: 1px 12px;
+    background-color: #d9d9d9;
+    border-radius: 50px;
+    font-weight: 700;
+  }
+  margin-bottom: 8px;
+}
+.color_palette {
+  display: flex;
+  gap: 4px;
+  background-color: #e2e2e2;
+  width: 100%;
+  height: 32px;
+  border-radius: 5px;
+  padding: 6px 8px;
+  li {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    border: 1px solid rgba(255, 255, 255, 0.87);
+  }
+}
 .item_price {
   margin-bottom: 30px;
   text-align: center;

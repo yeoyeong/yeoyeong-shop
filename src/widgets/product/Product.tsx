@@ -15,7 +15,7 @@ const Product = () => {
 
   return (
     <section className={styles.product_wrap}>
-      <ListSkeleton />
+      {/* <ListSkeleton /> */}
       <List category={category} />
     </section>
   );

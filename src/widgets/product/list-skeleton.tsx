@@ -6,14 +6,13 @@ const ListSkeleton = () => {
     22, 23, 24, 25, 26, 27,
   ]);
 
-  console.log(itemList.length);
-  return itemList.map((itemLine, index) => {
+  return itemList.map((itemLine) => {
     return (
       <div className={styles.items_line} key={Math.random()}>
         {itemLine.map((item) => (
           <>
             <div
-              className={styles.item}
+              className={styles.item_skeleton}
               key={item}
               style={
                 Math.random() < 0.5 ? { height: "300px" } : { height: "200px" }
