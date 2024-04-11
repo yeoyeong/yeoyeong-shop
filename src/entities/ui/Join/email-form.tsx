@@ -1,4 +1,3 @@
-import useInput from "@src/shared/hooks/useInput";
 import styles from "@src/pages/Join/join-page.module.scss";
 
 interface Props {

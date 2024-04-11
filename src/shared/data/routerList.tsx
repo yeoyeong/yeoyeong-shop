@@ -1,7 +1,5 @@
 import CartPage from "@src/pages/Cart/cart-page";
 import Home from "@src/pages/Home/home-page";
-import IdForm from "@src/entities/ui/Join/id-form";
-import JoinPage from "@src/pages/Join/join-page";
 import MyAccountPage from "@src/pages/MyAccount/my_account-page";
 import PageNotFound from "@src/pages/errors/404-page";
 import ErrorPage from "@src/pages/errors/error-page";

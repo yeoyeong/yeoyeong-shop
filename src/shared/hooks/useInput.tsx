@@ -2,7 +2,6 @@ import { useState, useCallback } from "react";
 
 function useInput(initialForm: string) {
   const [value, setValue] = useState(initialForm);
-  const [byte, setByte] = useState(0);
   const handleChange = useCallback(
     (event: any) => {
       setValue(event.target.value);

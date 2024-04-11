@@ -1,7 +1,7 @@
 import ReactDOM from "react-dom";
 import styles from "./modal.module.scss";
 import { useEffect } from "react";
-import { useLocation, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 const ModalLayout = ({ children }: { children: React.ReactNode }) => {
   const navigate = useNavigate();
   const queryParams = new URLSearchParams(location.search);

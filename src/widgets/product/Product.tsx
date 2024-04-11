@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import ListSkeleton from "./list-skeleton";
 import styles from "./product.module.scss";
 import List from "./list";
 import { useLocation } from "react-router-dom";
