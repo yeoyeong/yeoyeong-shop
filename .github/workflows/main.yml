@@ -12,8 +12,14 @@ jobs:
     steps:
       - name: Checkout source code. # 레포지토리 체크아웃
         uses: actions/checkout@master
+
+      - name: Setup Node.js # Node.js 설정
+        uses: actions/setup-node@v3
+        with:
+          node-version: "20"
+
       - name: Cache node modules # node modules 캐싱
-        uses: actions/cache@v1
+        uses: actions/cache@v3
         with:
           path: node_modules
           key: ${{ runner.OS }}-build-${{ hashFiles('**/package-lock.json') }}
