@@ -24,7 +24,11 @@ const Image = ({
   );
   return (
     <>
-      {!isLoaded && <div style={SKELETON_HEIGHT}></div>}
+      {!isLoaded && (
+        <div style={SKELETON_HEIGHT}>
+          <div className={styles.image_skeleton_wrap}></div>
+        </div>
+      )}
       {
         <img
           src={imageUrl}
