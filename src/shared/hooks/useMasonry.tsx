@@ -3,10 +3,11 @@ import useWindowWidth from "./useWindowWidth";
 import { Product } from "../types/product";
 
 const useMasonry = (initialData: Product[]) => {
-  const { windowWidth } = useWindowWidth(260);
+  const { windowWidth } = useWindowWidth(241);
   const [itemList, setItemList] = useState<Product[][]>([]);
 
   useEffect(() => {
+    console.log(windowWidth);
     const newArr: Product[][] = Array.from({ length: windowWidth }, () => []);
     // cur = arr[i], acc = arr
     const result = initialData.reduce((acc, cur, idx) => {

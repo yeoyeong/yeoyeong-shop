@@ -3,9 +3,9 @@ import { Product } from "@src/shared/types/product";
 import { useEffect, useState } from "react";
 import styles from "./product.module.scss";
 import useMasonry from "@src/shared/hooks/useMasonry";
-import Image from "../Image";
 import { addCommasToNumber } from "@src/shared/data/regular_expression";
 import { checkPostWithinThreeMonths } from "@src/features/checkPostWithinThreeMonths ";
+import ProductImage from "@src/features/product/image-product";
 
 interface Props {
   category: string | null;
@@ -31,7 +31,6 @@ const List = ({ category }: Props) => {
         setProductList(product_list.filter((el) => el.category === "top"));
         break;
       case "bottom":
-        console.log("??");
         setProductList(product_list.filter((el) => el.category === "bottom"));
         break;
       default:
@@ -44,13 +43,16 @@ const List = ({ category }: Props) => {
   }, [category]);
 
   return itemList.map((itemLine, index) => {
-    console.log(itemLine);
     return (
       <div className={styles.items_line} key={index}>
         {itemLine.map((item) => (
           <>
             <div className={styles.item} key={item.id}>
-              <Image imageUrl={item.thumbnail} alt={item.title} height={300} />
+              <ProductImage
+                imageUrl={item.thumbnail}
+                alt={item.title}
+                height={300}
+              />
               <div className={styles.item_hover}>
                 <ul className={styles.icon_wrap}>
                   {checkPostWithinThreeMonths(item.createdAt) && (

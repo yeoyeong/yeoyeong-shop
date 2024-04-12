@@ -1,7 +1,7 @@
 .product_wrap {
   display: flex;
   justify-content: center;
-  padding: 16px 80px;
+  padding: 16px 4%;
   gap: 20px;
   //   width: 100%;
   //   align-items: center;
@@ -75,6 +75,7 @@
     rgba(50, 50, 93, 0.25) 0px 50px 100px -20px,
     rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
   border-radius: 38px;
+  z-index: 1;
 }
 .icon_wrap {
   display: flex;

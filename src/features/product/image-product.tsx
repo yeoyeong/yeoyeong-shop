@@ -1,8 +1,8 @@
 import { useMemo, useState } from "react";
-import styles from "./image.module.scss";
+import styles from "./image-product.module.scss";
 // import Spinner from "./Spinner";
 
-const Image = ({
+const ProductImage = ({
   imageUrl,
   alt,
   height,
@@ -24,7 +24,13 @@ const Image = ({
   );
   return (
     <>
-      {!isLoaded && <div style={SKELETON_HEIGHT}></div>}
+      {!isLoaded && (
+        <div style={SKELETON_HEIGHT} className={styles.image_skeleton_wrap}>
+          <div className={styles.image_skeleton}>
+            <div className={styles.loader}></div>
+          </div>
+        </div>
+      )}
       {
         <img
           src={imageUrl}
@@ -40,4 +46,4 @@ const Image = ({
   );
 };
 
-export default Image;
+export default ProductImage;

@@ -20,7 +20,7 @@ const useWindowWidth = (itemSize: number) => {
     return () => window.removeEventListener("resize", handleResize);
   }, []); // 컴포넌트가 처음 마운트 될때와 언마운트 될 때 실행
 
-  return { windowWidth };
+  return { windowWidth: windowWidth <= 1 ? 2 : windowWidth };
 };
 
 export default useWindowWidth;
