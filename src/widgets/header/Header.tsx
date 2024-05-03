@@ -7,9 +7,9 @@ const Header = () => {
   return (
     <header className={styles.header_bar}>
       <h1>
-        <Link to="/">
+        <a href="/">
           <Image imageUrl={logo} alt="메인로고" height={24} />
-        </Link>
+        </a>
       </h1>
       <HeaderNav />
     </header>

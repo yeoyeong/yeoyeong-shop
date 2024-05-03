@@ -1,6 +1,7 @@
 import CartPage from "@src/pages/Cart/cart-page";
 import Home from "@src/pages/Home/home-page";
 import MyAccountPage from "@src/pages/MyAccount/my_account-page";
+import ProductDetailPage from "@src/pages/ProductDetail/product_detail-page";
 import PageNotFound from "@src/pages/errors/404-page";
 import ErrorPage from "@src/pages/errors/error-page";
 import { RouteObject } from "react-router-dom";
@@ -19,18 +20,18 @@ const publicPages: ExtendedRouteObject[] = [
     index: true,
     role: 1,
   },
-  // {
-  //   path: "/join",
-  //   element: <JoinPage />,
-  //   errorElement: <ErrorPage />,
-  //   role: 1,
-  //   children: [
-  //     {
-  //       path: "form",
-  //       element: <IdForm />,
-  //     },
-  //   ],
-  // },
+  {
+    path: "/productdetail/:id",
+    element: <ProductDetailPage />,
+    errorElement: <ErrorPage />,
+    role: 1,
+    // children: [
+    //   {
+    //     path: "ProductDetail/:id",
+    //     element: <IdForm />,
+    //   },
+    // ],
+  },
   {
     path: "*",
     element: <PageNotFound />,

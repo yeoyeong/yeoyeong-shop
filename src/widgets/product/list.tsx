@@ -6,6 +6,7 @@ import useMasonry from "@src/shared/hooks/useMasonry";
 import { addCommasToNumber } from "@src/shared/data/regular_expression";
 import { checkPostWithinThreeMonths } from "@src/features/checkPostWithinThreeMonths ";
 import ProductImage from "@src/features/product/image-product";
+import { Link, useLocation } from "react-router-dom";
 
 interface Props {
   category: string | null;
@@ -14,6 +15,7 @@ interface Props {
 const List = ({ category }: Props) => {
   const [ProductList, setProductList] = useState<Product[]>([]);
   const { itemList } = useMasonry(ProductList);
+  const { search } = useLocation();
 
   //임시
   const productCategoryFilter = () => {
@@ -46,7 +48,7 @@ const List = ({ category }: Props) => {
     return (
       <div className={styles.items_line} key={index}>
         {itemLine.map((item) => (
-          <>
+          <Link to={`productdetail/${item.id}${search}`}>
             <div className={styles.item} key={item.id}>
               <ProductImage
                 imageUrl={item.thumbnail}
@@ -88,7 +90,7 @@ const List = ({ category }: Props) => {
             <p className={styles.item_price}>
               {addCommasToNumber(item.price.toString())} won
             </p>
-          </>
+          </Link>
         ))}
       </div>
     );
