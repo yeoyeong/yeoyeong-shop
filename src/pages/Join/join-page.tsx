@@ -1,11 +1,11 @@
 import AuthLayout from "@src/widgets/layout/modal/Auth-layout";
-import IdForm from "../../entities/ui/Join/id-form";
+import IdForm from "./entities/ui/id-form";
 import styles from "./join-page.module.scss";
 import useInput from "@src/shared/hooks/useInput";
 import { useEffect, useState } from "react";
-import PassWordForm from "@src/entities/ui/Join/pw-form";
-import EmailForm from "@src/entities/ui/Join/email-form";
-import JoinNavigateBtn from "@src/entities/ui/Join/navigate-btn";
+import PassWordForm from "@src/pages/Join/entities/ui/pw-form";
+import EmailForm from "@src/pages/Join/entities/ui/email-form";
+import JoinNavigateBtn from "@src/pages/Join/entities/ui/navigate-btn";
 const JoinPage = () => {
   const [pageState, setPageState] = useState(0);
   const id = useInput("");

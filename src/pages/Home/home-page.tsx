@@ -1,5 +1,5 @@
 import Layout from "@src/widgets/layout/Layout";
-import Product from "@src/widgets/product/Product";
+import Product from "@src/pages/Home/product/Product";
 // import { useSearchParams } from "react-router-dom";
 
 const Home = () => {

@@ -5,7 +5,7 @@ import styles from "./product.module.scss";
 import useMasonry from "@src/shared/hooks/useMasonry";
 import { addCommasToNumber } from "@src/shared/data/regular_expression";
 import { checkPostWithinThreeMonths } from "@src/features/checkPostWithinThreeMonths ";
-import ProductImage from "@src/features/product/image-product";
+import ProductImage from "@src/pages/Home/product/features/image-product";
 import { Link, useLocation } from "react-router-dom";
 
 interface Props {

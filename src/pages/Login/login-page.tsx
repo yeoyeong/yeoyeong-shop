@@ -1,5 +1,5 @@
 import AuthLayout from "@src/widgets/layout/modal/Auth-layout";
-import LoginForm from "@src/entities/ui/login/login-form";
+import LoginForm from "@src/pages/Login/entities/ui/login-form";
 const LoginPage = () => {
   return (
     <AuthLayout>
