@@ -7,8 +7,14 @@ interface Props {
     onChange: (event: any) => void;
     cutByLen: (e: any, limit: number) => void;
   };
+  passwordCheck: {
+    value: string;
+    setValue: React.Dispatch<React.SetStateAction<string>>;
+    onChange: (event: any) => void;
+    cutByLen: (e: any, limit: number) => void;
+  };
 }
-const PassWordForm = ({ password }: Props) => {
+const PassWordForm = ({ password, passwordCheck }: Props) => {
   return (
     <div className={styles.password_box}>
       <div className={styles.input_wrap}>
@@ -18,15 +24,16 @@ const PassWordForm = ({ password }: Props) => {
           value={password.value}
           onChange={password.onChange}
           onKeyUp={(e) => password.cutByLen(e, 10)}
+          autoFocus
         />
       </div>
       <div className={styles.input_wrap}>
         <p>PASSWORD CHECK</p>
         <input
           type="password"
-          value={password.value}
-          onChange={password.onChange}
-          onKeyUp={(e) => password.cutByLen(e, 10)}
+          value={passwordCheck.value}
+          onChange={passwordCheck.onChange}
+          onKeyUp={(e) => passwordCheck.cutByLen(e, 10)}
         />
       </div>
     </div>

@@ -1,34 +1,62 @@
 import styles from "@src/pages/Join/join-page.module.scss";
+import useModalNavigate from "@src/shared/hooks/useModalNavigate";
 
 interface Props {
   pageState: number;
   setPageState: React.Dispatch<React.SetStateAction<number>>;
+  validationEmailHadler: () => boolean;
+  validationPasswordHadler: () => boolean;
 }
-const JoinNavigateBtn = ({ pageState, setPageState }: Props) => {
+const JoinNavigateBtn = ({
+  pageState,
+  setPageState,
+  validationEmailHadler,
+}: Props) => {
+  const { modalNavigate } = useModalNavigate();
+
+  // const a = () => {
+  //   if (validationState === "빈칸") return alert("이메일을 입력해주세요.");
+  //   console.log("?");
+  //   console.log(validationState);
+  // };
   return (
     <div className={styles.navigate_btn_wrap}>
-      {pageState !== 0 && (
+      {pageState !== 0 && pageState < 2 && (
         <button
+          type="button"
           className={styles.prev_btn}
-          onClick={() => setPageState((prev) => (prev <= 0 ? prev : prev - 1))}
+          onClick={() => {
+            setPageState((prev) => (prev <= 0 ? prev : prev - 1));
+          }}
         >
           Prev
         </button>
       )}
-      {pageState < 2 && (
+      {pageState < 1 && (
         <button
+          type="button"
           className={styles.next_btn}
-          onClick={() => setPageState((prev) => (prev >= 2 ? prev : prev + 1))}
+          onClick={() => {
+            if (validationEmailHadler()) {
+              setPageState((prev) => (prev >= 1 ? prev : prev + 1));
+            }
+          }}
         >
           Next
         </button>
       )}
+      {pageState === 1 && (
+        <button className={styles.next_btn} type="submit">
+          Success
+        </button>
+      )}
       {pageState === 2 && (
         <button
+          type="button"
           className={styles.next_btn}
-          onClick={() => setPageState((prev) => (prev >= 2 ? prev : prev + 1))}
+          onClick={() => modalNavigate("login")}
         >
-          Success
+          로그인하러 가기
         </button>
       )}
     </div>

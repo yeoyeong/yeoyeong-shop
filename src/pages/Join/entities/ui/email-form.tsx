@@ -6,9 +6,20 @@ interface Props {
     setValue: React.Dispatch<React.SetStateAction<string>>;
     onChange: (event: any) => void;
     cutByLen: (e: any, limit: number) => void;
+    validationEmailHadler: () => boolean;
   };
+  setPageState: React.Dispatch<React.SetStateAction<number>>;
 }
-const EmailForm = ({ email }: Props) => {
+const EmailForm = ({ email, setPageState }: Props) => {
+  const handleKeyDown = (event: React.KeyboardEvent<HTMLInputElement>) => {
+    if (event.key === "Enter") {
+      event.preventDefault();
+      if (email.validationEmailHadler()) {
+        setPageState((prev) => (prev >= 1 ? prev : prev + 1));
+      }
+    }
+  };
+
   return (
     <div className={styles.input_wrap}>
       <p>E-mail</p>
@@ -16,7 +27,8 @@ const EmailForm = ({ email }: Props) => {
         type="text"
         value={email.value}
         onChange={email.onChange}
-        onKeyUp={(e) => email.cutByLen(e, 10)}
+        onKeyUp={(e) => email.cutByLen(e, 30)}
+        onKeyDown={handleKeyDown}
       />
     </div>
   );

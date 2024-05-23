@@ -1,7 +1,7 @@
 import useModalNavigate from "@src/shared/hooks/useModalNavigate";
 import styles from "@src/widgets/header/Header.module.scss";
 
-const AuthButtonWrap = () => {
+const GuestButtonWrap = () => {
   const { modalNavigate } = useModalNavigate();
 
   return (
@@ -12,4 +12,4 @@ const AuthButtonWrap = () => {
   );
 };
 
-export default AuthButtonWrap;
+export default GuestButtonWrap;

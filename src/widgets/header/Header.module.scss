@@ -169,6 +169,23 @@
   } /* outline 테두리 속성 수정 */
 }
 
+.user_button_wrap {
+  display: flex;
+  gap: 14px;
+  margin-left: 16px;
+  button {
+    background-color: transparent;
+    border: none;
+    width: max-content;
+    cursor: pointer;
+  }
+  button:hover {
+    opacity: 0.6;
+  }
+  button:focus {
+    transform: scale(0.9);
+  }
+}
 .guest_button_wrap {
   display: flex;
   gap: 9px;

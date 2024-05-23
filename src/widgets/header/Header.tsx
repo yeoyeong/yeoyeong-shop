@@ -1,4 +1,3 @@
-import { Link } from "react-router-dom";
 import styles from "./Header.module.scss";
 import HeaderNav from "./components/Nav";
 import logo from "@src/shared/assets/logo.png";
