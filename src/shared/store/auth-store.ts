@@ -8,6 +8,7 @@ interface ID {
 
 const authStore = create<ID>((set) => ({
   userInfo: {
+    userType: 0,
     accessToken: null,
     uid: null,
     email: null,

@@ -1,7 +1,7 @@
 import AuthLayout from "@src/widgets/layout/modal/Auth-layout";
 import styles from "./join-page.module.scss";
 import useInput from "@src/shared/hooks/useInput";
-import { useCallback, useState } from "react";
+import { useEffect, useState } from "react";
 import PassWordForm from "@src/pages/Join/entities/ui/pw-form";
 import EmailForm from "@src/pages/Join/entities/ui/email-form";
 import JoinNavigateBtn from "@src/pages/Join/entities/ui/navigate-btn";
@@ -42,6 +42,9 @@ const JoinPage = () => {
         // ..
       });
   };
+  useEffect(() => {
+    console.log(pageState);
+  }, [pageState]);
 
   return (
     <AuthLayout>

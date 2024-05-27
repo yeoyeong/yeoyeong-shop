@@ -1,23 +1,38 @@
 import { useEffect, useState } from "react";
 import useWindowWidth from "./useWindowWidth";
-import { Product } from "../types/product";
+import { Product } from "../store/products.store-type";
+import useGetProducts from "@src/pages/Home/product/features/queries/useGetProducts";
+import useIntersect from "./useIntersect";
 
-const useMasonry = (initialData: Product[]) => {
+const useMasonry = () => {
+  const {
+    contents: initialData,
+    isFetching,
+    fetchNextPage,
+    hasNextPage,
+  } = useGetProducts();
   const { windowWidth } = useWindowWidth(241);
   const [itemList, setItemList] = useState<Product[][]>([]);
 
+  const ref = useIntersect(async (entry, observer) => {
+    console.log("관찰");
+    observer.unobserve(entry.target); //옵저버 제거 더 이상 해당 오브젝트 관찰 x
+    if (hasNextPage && !isFetching) {
+      fetchNextPage();
+    }
+  });
+
   useEffect(() => {
-    console.log(windowWidth);
+    if (isFetching) return;
     const newArr: Product[][] = Array.from({ length: windowWidth }, () => []);
-    // cur = arr[i], acc = arr
     const result = initialData.reduce((acc, cur, idx) => {
       acc[idx % acc.length].push(cur);
       return acc;
     }, newArr);
     setItemList(result);
-  }, [windowWidth, initialData]);
+  }, [windowWidth, ref, isFetching]);
 
-  return { itemList, windowWidth };
+  return { itemList, windowWidth, ref };
 };
 
 export default useMasonry;

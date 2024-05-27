@@ -173,6 +173,13 @@
   display: flex;
   gap: 14px;
   margin-left: 16px;
+  figure {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 1px solid #E7E7E7;
+  }
   button {
     background-color: transparent;
     border: none;

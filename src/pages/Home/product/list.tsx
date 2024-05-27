@@ -1,55 +1,21 @@
-import { product_list } from "@src/shared/data/mock_data";
-import { Product } from "@src/shared/types/product";
-import { useEffect, useState } from "react";
 import styles from "./product.module.scss";
 import useMasonry from "@src/shared/hooks/useMasonry";
 import { addCommasToNumber } from "@src/shared/data/regular_expression";
-import { checkPostWithinThreeMonths } from "@src/features/checkPostWithinThreeMonths ";
 import ProductImage from "@src/features/image-product";
 import { Link, useLocation } from "react-router-dom";
+import { colorList } from "@src/shared/store/products.store-type";
+import { checkPostWithinThreeMonths } from "@src/features/checkPostWithinThreeMonths ";
 
-interface Props {
-  category: string | null;
-}
-
-const List = ({ category }: Props) => {
-  const [ProductList, setProductList] = useState<Product[]>([]);
-  const { itemList } = useMasonry(ProductList);
+const List = () => {
+  const { itemList, ref } = useMasonry();
   const { search } = useLocation();
-
-  //임시
-  const productCategoryFilter = () => {
-    switch (category) {
-      case null:
-        setProductList(product_list.filter((el) => el.rating >= 4));
-        break;
-      case "outer":
-        setProductList(product_list.filter((el) => el.category === "outer"));
-        break;
-      case "skirt":
-        setProductList(product_list.filter((el) => el.category === "skirt"));
-        break;
-      case "top":
-        setProductList(product_list.filter((el) => el.category === "top"));
-        break;
-      case "bottom":
-        setProductList(product_list.filter((el) => el.category === "bottom"));
-        break;
-      default:
-        break;
-    }
-  };
-
-  useEffect(() => {
-    productCategoryFilter();
-  }, [category]);
-
+  // console.log(itemList.);
   return itemList.map((itemLine, index) => {
     return (
       <div className={styles.items_line} key={index}>
         {itemLine.map((item) => (
-          <Link to={`productdetail/${item.id}${search}`}>
-            <div className={styles.item} key={item.id}>
+          <Link to={`productdetail/${item.id}${search}`} key={item.id}>
+            <div className={styles.item}>
               <ProductImage
                 imageUrl={item.thumbnail}
                 alt={item.title}
@@ -57,7 +23,7 @@ const List = ({ category }: Props) => {
               />
               <div className={styles.item_hover}>
                 <ul className={styles.icon_wrap}>
-                  {checkPostWithinThreeMonths(item.createdAt) && (
+                  {checkPostWithinThreeMonths(item.createdAt.seconds) && (
                     <li className={styles.new_icon}>NEW</li>
                   )}
                   <li className={styles.best_icon}>BEST ★</li>
@@ -75,15 +41,18 @@ const List = ({ category }: Props) => {
                 <p className={styles.item_name}>{item.title}</p>
                 <p className={styles.sub_title}>Size</p>
                 <ul className={styles.size_wrap}>
-                  {item.size.map((el) => (
-                    <li>{el}</li>
+                  {item.sizeList.map((el: string) => (
+                    <li key={el}>{el}</li>
                   ))}
                 </ul>
                 <p className={styles.sub_title}>Color</p>
                 <ul className={styles.color_palette}>
-                  {Object.entries(item.color_list).map((el) => {
-                    return <li style={{ backgroundColor: el[1] }}>{}</li>;
-                  })}
+                  {item.colorList.map((color: colorList) => (
+                    <li
+                      key={color.colorCode}
+                      style={{ backgroundColor: color.colorCode }}
+                    ></li>
+                  ))}
                 </ul>
               </div>
             </div>
@@ -92,6 +61,7 @@ const List = ({ category }: Props) => {
             </p>
           </Link>
         ))}
+        <div ref={ref} style={{ height: "1px" }} />
       </div>
     );
   });

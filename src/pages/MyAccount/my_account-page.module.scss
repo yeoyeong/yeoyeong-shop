@@ -1,0 +1,74 @@
+.my_account_wrap {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0 1.56%;
+}
+.profile_img_wrap {
+    border-radius: 50%;
+    overflow: hidden;
+    width: 154px;
+    height: 154px;
+    label {
+        cursor: pointer;
+        img {
+            width: inherit;
+            height: inherit;
+        }
+    }
+    
+}
+
+.profile_img_input_wrap {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    label, button {
+        display: block;
+        padding: 0 20px;
+        height: 58px;
+        line-height: 58px;
+        cursor: pointer;
+        font-size: 20px;
+        border-radius: 60px;
+        text-align: center;
+    }
+
+    label {
+        display: block;
+        background-color: #DDDDDD;
+    }
+    button {
+        border: none;
+        background-color: var(--main);
+        color:var(--white)
+    }
+    
+    input {
+        display: none;
+    }
+}
+
+.logout_button_wrap {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 80px;
+    gap:8px;
+    
+    a, button {
+        border-radius: 6px;
+        background-color: transparent;
+        border:1px solid var(--light-gray-200);
+        color:var(--light-gray-200);
+        padding:4px 6px;
+        cursor: pointer;
+        transition: 0.2s;
+    }
+
+    a:hover , button:hover {
+        color:var(--gray-200);
+        border:1px solid var(--gray-200);
+    }
+}

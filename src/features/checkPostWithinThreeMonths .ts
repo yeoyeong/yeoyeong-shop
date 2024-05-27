@@ -1,4 +1,4 @@
-export const checkPostWithinThreeMonths = (postDateStr: string) => {
+export const checkPostWithinThreeMonths = (postDateStr: number) => {
   // 게시물 날짜와 현재 날짜를 Date 객체로 변환
   const postDate = new Date(postDateStr);
   const currentDate = new Date();

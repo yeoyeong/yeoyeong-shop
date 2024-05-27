@@ -4,21 +4,18 @@ import useRouterHook from "@src/shared/hooks/useRouterHook";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import "@src/shared/styles/theme.scss";
 import "@src/shared/styles/globalstyles.scss";
+import authStore from "@src/shared/store/auth-store";
+import { QueryClient, QueryClientProvider } from "react-query";
 
 function App() {
-  const isLoggedin = {
-    userType: 0,
-    // userType 0 === 로그인전
-    // userType 1 === 로그인
-    // userType 2 === 어드민
-  };
-
-  const router = useRouterHook(isLoggedin.userType);
+  const queryClient = new QueryClient(); // 생성
+  const { userInfo } = authStore();
+  const router = useRouterHook(userInfo.userType);
 
   return (
-    <>
+    <QueryClientProvider client={queryClient}>
       <RouterProvider router={createBrowserRouter(router.filterRouterList)} />
-    </>
+    </QueryClientProvider>
   );
 }
 

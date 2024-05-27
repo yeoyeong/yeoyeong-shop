@@ -12,7 +12,7 @@ const JoinNavigateBtn = ({
   setPageState,
   validationEmailHadler,
 }: Props) => {
-  const { modalNavigate } = useModalNavigate();
+  const { removeModalQueryParam } = useModalNavigate();
 
   // const a = () => {
   //   if (validationState === "빈칸") return alert("이메일을 입력해주세요.");
@@ -32,13 +32,13 @@ const JoinNavigateBtn = ({
           Prev
         </button>
       )}
-      {pageState < 1 && (
+      {pageState === 0 && (
         <button
           type="button"
           className={styles.next_btn}
           onClick={() => {
             if (validationEmailHadler()) {
-              setPageState((prev) => (prev >= 1 ? prev : prev + 1));
+              setPageState((prev) => prev + 1);
             }
           }}
         >
@@ -54,9 +54,9 @@ const JoinNavigateBtn = ({
         <button
           type="button"
           className={styles.next_btn}
-          onClick={() => modalNavigate("login")}
+          onClick={removeModalQueryParam}
         >
-          로그인하러 가기
+          완료
         </button>
       )}
     </div>

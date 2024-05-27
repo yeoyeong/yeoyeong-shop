@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import useModalNavigate from "@src/shared/hooks/useModalNavigate";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from "@src/shared/libs/firebase-config";
+
 const LoginForm = () => {
   const email = useInput("");
   const password = useInput("");
@@ -18,7 +19,9 @@ const LoginForm = () => {
         // const user = userCredential.user;
         // console.log(user);
         // ID 토큰 가져오기
-        removeModalQueryParam;
+        email.setValue("");
+        password.setValue("");
+        removeModalQueryParam();
         // user.getIdToken().then((idToken) => {
         //   // ID 토큰을 로컬 스토리지에 저장
         //   localStorage.setItem("userToken", idToken);

@@ -8,15 +8,6 @@ import authStore from "@src/shared/store/auth-store";
 
 const HeaderNav = () => {
   const { userInfo } = authStore();
-  //로그아웃 함수
-  // const handleLogout = async () => {
-  //   try {
-  //     await signOut(auth);
-  //     console.log("User logged out successfully");
-  //   } catch (error) {
-  //     console.error("Error logging out:", error);
-  //   }
-  // };
 
   return (
     <nav className={styles.header_nav}>
