@@ -72,3 +72,33 @@
         border:1px solid var(--gray-200);
     }
 }
+
+.toggle_button_wrap {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap:9%;
+    margin-top: 60px;
+    button {
+        width:110px;
+        height:110px;
+        border-radius: 50%;
+        border:1px solid var(--black);
+        background-color: transparent;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition:0.2s;
+        svg {
+            fill:var(--black);
+        }
+        cursor: pointer;
+    }
+    .on {
+        background-color: var(--black);
+        color:var(--white);
+        svg{
+            fill:var(--white);
+        }
+    }
+}

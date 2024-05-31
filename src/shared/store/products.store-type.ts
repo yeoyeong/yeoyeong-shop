@@ -16,10 +16,22 @@ export type Product = {
   thumbnail: string;
   category: category;
   title: string;
+  shippingFee: string;
   content: string;
   sizeList: string[];
   createdAt: createdAt;
   detailImg: string;
-  rating: string;
-  order_quantity: string;
+  rating: number;
+  order_quantity: number;
+};
+
+export type CartProduct = {
+  count: number;
+  productId: string;
+  color: colorList;
+  size: string;
+  shippingFee: string | undefined;
+  price: string;
+  thumbnail: string;
+  title: string;
 };

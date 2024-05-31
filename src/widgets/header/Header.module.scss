@@ -180,16 +180,13 @@
     overflow: hidden;
     border: 1px solid #E7E7E7;
   }
-  button {
-    background-color: transparent;
-    border: none;
+  a {
     width: max-content;
-    cursor: pointer;
   }
-  button:hover {
+  a:hover {
     opacity: 0.6;
   }
-  button:focus {
+  a:focus {
     transform: scale(0.9);
   }
 }

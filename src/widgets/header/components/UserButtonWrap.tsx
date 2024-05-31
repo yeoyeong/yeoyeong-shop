@@ -7,9 +7,9 @@ const UserButtonWrap = () => {
   const { userInfo } = authStore();
   return (
     <div className={styles.user_button_wrap}>
-      <button>
+      <Link to="/myaccount">
         <img src={cart_icon} alt="장바구니 아이콘" />
-      </button>
+      </Link>
       <Link to="/myaccount">
         <figure>
           <img

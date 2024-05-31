@@ -15,6 +15,7 @@ const PostPage = () => {
   const title = useInput("");
   const content = useInput("");
   const price = useNumberInput("");
+  const shippingFee = useNumberInput("");
   const [category, setCategory] = useState<
     "outer" | "skirt" | "top" | "bottom"
   >("outer");
@@ -24,12 +25,13 @@ const PostPage = () => {
   const [sizeList, setSizeList] = useState<string[]>([]);
 
   const SubmitHandler = async () => {
-    const thumbnail = await upLoadFBHandler();
-    const detailImg = await upLoadFBHandler();
+    const thumbnail = await upLoadFBHandler(imageFile);
+    const detailImg = await upLoadFBHandler(detailFile);
     if (
       !title.value ||
       !content.value ||
       !price.value ||
+      !shippingFee.value ||
       !thumbnail ||
       sizeList.length === 0 ||
       colorList.length === 0
@@ -40,6 +42,7 @@ const PostPage = () => {
       title: title.value,
       content: content.value,
       price: price.value,
+      shippingFee: shippingFee.value,
       category,
       colorList,
       sizeList,
@@ -78,9 +81,9 @@ const PostPage = () => {
   };
 
   //사진
-  const upLoadFBHandler = async () => {
-    if (!imageFile) return;
-    const file = imageFile;
+  const upLoadFBHandler = async (image: File | null) => {
+    if (!image) return;
+    const file = image;
 
     const uploded_file = await uploadBytes(
       ref(storage, `products/${file.name}`), //경로
@@ -101,6 +104,12 @@ const PostPage = () => {
         placeholder="가격"
         onChange={price.onChange}
         value={price.value}
+      />
+      <input
+        type="text"
+        placeholder="배송비"
+        onChange={shippingFee.onChange}
+        value={shippingFee.value}
       />
       <input type="file" placeholder="썸네일 사진" onChange={onImageChange} />
       <input type="file" placeholder="상세 설명" onChange={onDetailChange} />

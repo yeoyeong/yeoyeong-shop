@@ -9,7 +9,7 @@ import { checkPostWithinThreeMonths } from "@src/features/checkPostWithinThreeMo
 const List = () => {
   const { itemList, ref } = useMasonry();
   const { search } = useLocation();
-  // console.log(itemList.);
+  console.log(itemList);
   return itemList.map((itemLine, index) => {
     return (
       <div className={styles.items_line} key={index}>
@@ -23,12 +23,7 @@ const List = () => {
               />
               <div className={styles.item_hover}>
                 <ul className={styles.icon_wrap}>
-                  {checkPostWithinThreeMonths(item.createdAt.seconds) && (
-                    <li className={styles.new_icon}>NEW</li>
-                  )}
-                  <li className={styles.best_icon}>BEST ★</li>
-                  <li className={styles.popular_icon}>주문폭주</li>
-                  {/* {checkPostWithinThreeMonths(item.createdAt) && (
+                  {checkPostWithinThreeMonths(item.createdAt) && (
                     <li className={styles.new_icon}>NEW</li>
                   )}
                   {item.rating > 3 && (
@@ -36,7 +31,7 @@ const List = () => {
                   )}
                   {item.order_quantity > 500 && (
                     <li className={styles.popular_icon}>주문폭주</li>
-                  )} */}
+                  )}
                 </ul>
                 <p className={styles.item_name}>{item.title}</p>
                 <p className={styles.sub_title}>Size</p>
