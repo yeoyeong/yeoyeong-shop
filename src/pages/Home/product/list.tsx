@@ -9,7 +9,7 @@ import { checkPostWithinThreeMonths } from "@src/features/checkPostWithinThreeMo
 const List = () => {
   const { itemList, ref } = useMasonry();
   const { search } = useLocation();
-  console.log(itemList);
+
   return itemList.map((itemLine, index) => {
     return (
       <div className={styles.items_line} key={index}>

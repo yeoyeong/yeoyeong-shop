@@ -1,30 +1,28 @@
+import { useNavigate } from "react-router-dom";
 import styles from "./my_account-page.module.scss";
 import CartIcon from "@src/shared/assets/cart_icon.svg?react";
 
-interface Props {
-  toggle: string;
-  setToggle: React.Dispatch<React.SetStateAction<string>>;
-}
+const ToggleBtn = ({ myaccountstate }: { myaccountstate: string | null }) => {
+  const navigate = useNavigate();
 
-const ToggleBtn = ({ toggle, setToggle }: Props) => {
   return (
     <div className={styles.toggle_button_wrap}>
       <button
-        className={toggle === "cart" ? styles.on : ""}
+        className={myaccountstate === "cart" ? styles.on : ""}
         onClick={() => {
-          setToggle("cart");
+          navigate("/myaccount?myaccountstate=cart");
         }}
       >
         <CartIcon />
       </button>
-      <button
-        className={toggle === "wish" ? styles.on : ""}
+      {/* <button
+        className={myaccountstate === "wish" ? styles.on : ""}
         onClick={() => {
-          setToggle("wish");
+          navigate("/myaccount?myaccountstate=wish");
         }}
       >
         Wish
-      </button>
+      </button> */}
     </div>
   );
 };

@@ -14,7 +14,9 @@ const CategoryTablet = () => {
   return (
     <div ref={ref}>
       <button className={styles.category_button} onClick={navToggleHandler}>
-        <span style={buttonStyle(result.title)}>{result.title}</span>
+        {result && (
+          <span style={buttonStyle(result.title)}>{result.title}</span>
+        )}
         <img src={chevron_down} alt="화살표 아이콘" />
       </button>
       {navToggle && (

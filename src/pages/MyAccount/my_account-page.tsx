@@ -1,16 +1,18 @@
 import Layout from "@src/widgets/layout/Layout";
 import Profile from "./Profile";
-import { useState } from "react";
 import ToggleBtn from "./ToggleBtn";
 import CartList from "./CartList";
+import { useSearchParams } from "react-router-dom";
 
 const MyAccountPage = () => {
-  const [toggle, setToggle] = useState<string>("cart");
+  const [searchParams] = useSearchParams();
+  const myaccountstate = searchParams.get("myaccountstate");
+
   return (
     <Layout>
       <Profile />
-      <ToggleBtn toggle={toggle} setToggle={setToggle} />
-      {toggle === "cart" && <CartList />}
+      <ToggleBtn myaccountstate={myaccountstate} />
+      {myaccountstate === "cart" && <CartList />}
     </Layout>
   );
 };

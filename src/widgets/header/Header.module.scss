@@ -79,6 +79,9 @@
     font-family: Libre;
     margin-right: 4px;
   }
+  img {
+    min-width: 12px;
+  }
   position: relative;
   &:focus {
     background-color: var(--light-gray-200);

@@ -1,3 +1,11 @@
+export type Category =
+  | "popular"
+  | "outer"
+  | "skirt"
+  | "top"
+  | "bottom"
+  | "search"
+  | null;
 // type Color = {
 //   [colorName: string]: string;
 // };

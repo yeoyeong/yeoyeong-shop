@@ -15,7 +15,6 @@ const useMasonry = () => {
   const [itemList, setItemList] = useState<Product[][]>([]);
 
   const ref = useIntersect(async (entry, observer) => {
-    console.log("관찰");
     observer.unobserve(entry.target); //옵저버 제거 더 이상 해당 오브젝트 관찰 x
     if (hasNextPage && !isFetching) {
       fetchNextPage();
@@ -24,6 +23,7 @@ const useMasonry = () => {
 
   useEffect(() => {
     if (isFetching) return;
+    if (!initialData) return;
     const newArr: Product[][] = Array.from({ length: windowWidth }, () => []);
     const result = initialData.reduce((acc, cur, idx) => {
       acc[idx % acc.length].push(cur);
