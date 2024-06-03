@@ -8,6 +8,7 @@ import useNumberInput from "@src/shared/hooks/useNumberInput";
 import { getDownloadURL, ref, uploadBytes } from "firebase/storage";
 import { db, storage } from "@src/shared/libs/firebase-config";
 import { addDoc, collection, serverTimestamp } from "firebase/firestore";
+import styles from "./post-page.module.scss";
 
 const PostPage = () => {
   const [imageFile, setImageFile] = useState<File | null>(null);
@@ -96,26 +97,39 @@ const PostPage = () => {
   };
   return (
     <Layout>
-      <input type="text" placeholder="제목" onChange={title.onChange} />
-      <input type="text" placeholder="소개" onChange={content.onChange} />
-      <ColorInput colorList={colorList} setColorList={setColorList} />
-      <SizeInput sizeList={sizeList} setSizeList={setSizeList} />
-      <input
-        type="text"
-        placeholder="가격"
-        onChange={price.onChange}
-        value={price.value}
-      />
-      <input
-        type="text"
-        placeholder="배송비"
-        onChange={shippingFee.onChange}
-        value={shippingFee.value}
-      />
-      <input type="file" placeholder="썸네일 사진" onChange={onImageChange} />
-      <input type="file" placeholder="상세 설명" onChange={onDetailChange} />
-      <CategoryHandler category={category} setCategory={setCategory} />
-      <button onClick={SubmitHandler}>상품 올리기</button>
+      <div className={styles.post_wrap}>
+        <h2>상품 올리기</h2>
+        <input type="text" placeholder="제목" onChange={title.onChange} />
+        <input type="text" placeholder="소개" onChange={content.onChange} />
+        <ColorInput colorList={colorList} setColorList={setColorList} />
+        <SizeInput sizeList={sizeList} setSizeList={setSizeList} />
+        <input
+          type="text"
+          placeholder="가격"
+          onChange={price.onChange}
+          value={price.value}
+        />
+        <input
+          type="text"
+          placeholder="배송비"
+          onChange={shippingFee.onChange}
+          value={shippingFee.value}
+        />
+        <div>
+          <span>썸네일 사진 첨부 : </span>
+          <input type="file" onChange={onImageChange} />
+        </div>
+        <div>
+          <span>상세 설명 사진 첨부 : </span>
+          <input
+            type="file"
+            placeholder="상세 설명 사진"
+            onChange={onDetailChange}
+          />
+        </div>
+        <CategoryHandler category={category} setCategory={setCategory} />
+        <button onClick={SubmitHandler}>상품 올리기</button>
+      </div>
     </Layout>
   );
 };

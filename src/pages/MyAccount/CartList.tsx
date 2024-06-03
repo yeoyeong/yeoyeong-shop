@@ -9,6 +9,7 @@ import InputAllCheckBox from "./features/InputAllCheckBox";
 import useDeletetoCart from "./features/query/useDeleteToCart";
 import { Link } from "react-router-dom";
 import CartTablePC from "./ui/CartTable-pc";
+import CartTableTablet from "./ui/CartTable-tablet";
 
 const CartList = () => {
   const { data, isLoading, isSuccess } = useGetCartList();
@@ -40,8 +41,13 @@ const CartList = () => {
           handleSingleCheck={handleSingleCheck}
           handleDeleteProduct={handleDeleteProduct}
         />
+        <CartTableTablet
+          data={data}
+          checkItemList={checkItemList}
+          handleSingleCheck={handleSingleCheck}
+        />
         <div className={styles.cart_button_wrap}>
-          <div>
+          <div className={styles.cart_all_check_wrap}>
             {/* <span className={styles.cart_button_left}> */}
             <InputAllCheckBox
               id={"allCheck"}

@@ -1,0 +1,38 @@
+.post_wrap {
+  display: flex;
+  flex-direction: column;
+  h2 {
+    font-size: 26px;
+  }
+  input {
+    height: 50px;
+  }
+  button {
+    height: 50px;
+  }
+
+  select {
+    height: 50px;
+  }
+}
+
+.color {
+  li {
+    display: flex;
+    align-items: center;
+    gap: 2px;
+    button {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 16px;
+      width: 16px;
+      font-size: 14px;
+      font-weight: 700;
+      background-color: transparent;
+      border: 1px solid var(--red);
+      color: var(--red);
+      border-radius: 50%;
+    }
+  }
+}

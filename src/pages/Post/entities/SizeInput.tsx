@@ -19,8 +19,14 @@ const SizeInput = ({ sizeList, setSizeList }: Props) => {
   };
   return (
     <div>
+      <p>사이즈 추가 : 입력 후 엔터</p>
       <form onSubmit={handler}>
-        <input type="text" onChange={size.onChange} value={size.value} />
+        <input
+          type="text"
+          onChange={size.onChange}
+          value={size.value}
+          placeholder="ex) free"
+        />
       </form>
       <ul>
         {sizeList.map((size, index) => (
