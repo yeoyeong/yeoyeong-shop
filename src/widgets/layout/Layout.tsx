@@ -20,7 +20,7 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
       const querySnapshot = await getDocs(userQuery);
       if (querySnapshot.empty) return userType;
       else userType = 2;
-
+      console.log(userType);
       return userType;
       // 결과 출력 또는 처리
       // querySnapshot.forEach((doc) => {

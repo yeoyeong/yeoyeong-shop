@@ -31,7 +31,6 @@ const PostPage = () => {
       !title.value ||
       !content.value ||
       !price.value ||
-      !shippingFee.value ||
       !thumbnail ||
       sizeList.length === 0 ||
       colorList.length === 0
@@ -84,9 +83,11 @@ const PostPage = () => {
   const upLoadFBHandler = async (image: File | null) => {
     if (!image) return;
     const file = image;
+    const timestamp = new Date().getTime();
+    const fileName = `${timestamp}_${file.name}`;
 
     const uploded_file = await uploadBytes(
-      ref(storage, `products/${file.name}`), //경로
+      ref(storage, `products/${fileName}`), //경로
       file //어떤파일 올릴지
     );
     const file_url = await getDownloadURL(uploded_file.ref);

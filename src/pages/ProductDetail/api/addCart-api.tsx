@@ -72,8 +72,14 @@ export const addToCartApi = async ({ uid, productId, size, color }: Props) => {
       // 문서가 존재하지 않으면 새 문서 생성 후 cart 배열에 productId 추가
       await setDoc(userDocRef, {
         uid,
-        cart: [productId],
-        count: 1,
+        cart: [
+          {
+            productId,
+            size,
+            color,
+            count: 1,
+          },
+        ],
       });
     }
     alert("성공");

@@ -7,6 +7,8 @@ import styles from "./CartList.module.scss";
 import { CartProduct } from "@src/shared/store/products.store-type";
 import InputAllCheckBox from "./features/InputAllCheckBox";
 import useDeletetoCart from "./features/query/useDeleteToCart";
+import { Link } from "react-router-dom";
+import CartTablePC from "./ui/CartTable-pc";
 
 const CartList = () => {
   const { data, isLoading, isSuccess } = useGetCartList();
@@ -28,70 +30,23 @@ const CartList = () => {
   if (isLoading) {
     return <div>로딩중</div>;
   }
-
   if (isSuccess) {
     return (
       <section className={styles.cart_list_wrap}>
-        <table className={styles.cart_table_wrap}>
-          <thead>
-            <tr>
-              <th></th>
-              <th>상품정보</th>
-              <th>옵션</th>
-              <th>상품금액</th>
-              <th>배송비</th>
-              <th>수량</th>
-            </tr>
-          </thead>
-          <tbody>
-            {data.cartList.map((item, index) => (
-              <tr key={index}>
-                <td className={styles.cart_checkbox}>
-                  <InputCheckBox
-                    id={index.toString()}
-                    value={item}
-                    checkItemList={checkItemList}
-                    handleSingleCheck={handleSingleCheck}
-                  />
-                </td>
-                <td className={styles.cart_title}>{item.title}</td>
-                <td>
-                  <ul className={styles.option_wrap}>
-                    <li className={styles.cart_color}>
-                      <p>
-                        {item.color.colorName}
-                        <span
-                          style={{ backgroundColor: item.color.colorCode }}
-                        ></span>
-                      </p>
-                    </li>
-                    <li className={styles.cart_size}>
-                      <p>
-                        size
-                        <span>{item.size}</span>
-                      </p>
-                    </li>
-                  </ul>
-                </td>
-                <td>
-                  {addCommasToNumber(
-                    (stringToNumber(item.price) * item.count).toString()
-                  )}
-                  <span>won</span>
-                </td>
-                <td>{item.shippingFee ? item.shippingFee : "무료배송"}</td>
-                <td>{item.count}</td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
+        <CartTablePC
+          data={data}
+          checkItemList={checkItemList}
+          handleAllCheck={handleAllCheck}
+          handleSingleCheck={handleSingleCheck}
+          handleDeleteProduct={handleDeleteProduct}
+        />
         <div className={styles.cart_button_wrap}>
           <div>
             {/* <span className={styles.cart_button_left}> */}
             <InputAllCheckBox
               id={"allCheck"}
               checkItemList={checkItemList}
-              defaultDataLength={data.cartList.length}
+              defaultDataLength={data.cartList ? data.cartList.length : 0}
               handleAllCheck={handleAllCheck}
               title={"전체선택"}
             />
