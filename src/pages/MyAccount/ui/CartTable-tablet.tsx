@@ -13,7 +13,6 @@ interface Props {
 }
 
 const CartTableTablet = ({ data, checkItemList, handleSingleCheck }: Props) => {
-  console.log(data, checkItemList);
   return (
     <ul className={styles.cart_table_tablet_wrap}>
       <li className={styles.line}></li>

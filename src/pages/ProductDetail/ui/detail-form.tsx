@@ -20,7 +20,6 @@ const DetailForm = ({ data }: Props) => {
       colorName: value[0],
       colorCode: value[1],
     });
-    console.log(color);
   };
   return (
     <section>

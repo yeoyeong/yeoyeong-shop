@@ -11,7 +11,7 @@ const useDeletetoCart = () => {
   const queryClient = useQueryClient();
 
   const mutation = useMutation(deleteToCartApi, {
-    onSuccess: (data) => {
+    onSuccess: () => {
       // queryClient.invalidateQueries("user_content");
       // queryClient.setQueryData(["user_content"], (oldQueryData: any) => {
       // return { ...data };

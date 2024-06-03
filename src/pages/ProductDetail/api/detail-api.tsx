@@ -7,7 +7,6 @@ export const getDetailProductApi = async (documentId: string) => {
 
   // 문서의 존재 여부를 확인
   if (docSnap.exists()) {
-    console.log("Document data:", docSnap.data());
     return { ...docSnap.data(), id: docSnap.id };
   } else {
     // 문서가 존재하지 않는 경우

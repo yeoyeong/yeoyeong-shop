@@ -7,6 +7,10 @@ import ProductImage from "@src/features/image-product";
 const ProductDetailPage = () => {
   const { id } = useParams();
   const { data, isLoading, isError } = useGetDetailProduct(id as string);
+
+  if (isError) {
+    <Layout>다시 시도해주세요.</Layout>;
+  }
   // 로딩 중일 때
   if (isLoading) {
     return <Layout>로딩 중...</Layout>;

@@ -14,7 +14,7 @@ const LoginForm = () => {
   const sumbitHandler = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     signInWithEmailAndPassword(auth, email.value, password.value)
-      .then((userCredential) => {
+      .then(() => {
         // Signed in
         // const user = userCredential.user;
         // console.log(user);
@@ -28,6 +28,7 @@ const LoginForm = () => {
         // });
       })
       .catch((error) => {
+        console.log(error);
         // const errorCode = error.code;
         // const errorMessage = error.message;
         alert("로그인에 실패하였습니다 아이디 또는 비밀번호를 확인해주세요.");

@@ -37,7 +37,6 @@ const PostPage = () => {
       colorList.length === 0
     )
       return alert("빈칸을 다 입력해주세요.");
-    console.log(sizeList.length);
     const formData = {
       title: title.value,
       content: content.value,

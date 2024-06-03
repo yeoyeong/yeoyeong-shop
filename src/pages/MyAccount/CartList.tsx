@@ -1,13 +1,9 @@
 import { useState } from "react";
-import InputCheckBox from "./features/InputCheckBox";
 import useGetCartList from "./features/query/useGetCartList";
-import { stringToNumber } from "@src/shared/libs/stringToNumber";
-import { addCommasToNumber } from "@src/shared/data/regular_expression";
 import styles from "./CartList.module.scss";
 import { CartProduct } from "@src/shared/store/products.store-type";
 import InputAllCheckBox from "./features/InputAllCheckBox";
 import useDeletetoCart from "./features/query/useDeleteToCart";
-import { Link } from "react-router-dom";
 import CartTablePC from "./ui/CartTable-pc";
 import CartTableTablet from "./ui/CartTable-tablet";
 

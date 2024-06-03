@@ -7,7 +7,7 @@ import { auth, db } from "@src/shared/libs/firebase-config";
 import authStore from "@src/shared/store/auth-store";
 import { collection, getDocs, query, where } from "firebase/firestore";
 const Layout = ({ children }: { children: React.ReactNode }) => {
-  const { userInfo, setUserInfo } = authStore();
+  const { setUserInfo } = authStore();
 
   const userTypeFnc = async (uid: string) => {
     let userType: 0 | 1 | 2 = 1;
@@ -20,7 +20,6 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
       const querySnapshot = await getDocs(userQuery);
       if (querySnapshot.empty) return userType;
       else userType = 2;
-      console.log(userType);
       return userType;
       // 결과 출력 또는 처리
       // querySnapshot.forEach((doc) => {

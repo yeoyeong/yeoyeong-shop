@@ -7,7 +7,6 @@ interface Props {
 const CategoryHandler = ({ category, setCategory }: Props) => {
   const selectHandler = (e: React.ChangeEvent<HTMLSelectElement>) => {
     setCategory(e.target.value as "outer" | "skirt" | "top" | "bottom");
-    console.log(category);
   };
   return (
     <>

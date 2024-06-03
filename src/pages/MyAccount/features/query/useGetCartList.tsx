@@ -5,7 +5,6 @@ import { CartProduct } from "@src/shared/store/products.store-type";
 
 const useGetCartList = () => {
   const { userInfo } = authStore();
-  console.log(userInfo);
   const result = useQuery("userContent", () => {
     return getUserCartApi({ uid: userInfo.uid ?? "error" });
   });

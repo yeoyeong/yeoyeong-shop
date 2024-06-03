@@ -44,7 +44,6 @@ export const addToCartApi = async ({ uid, productId, size, color }: Props) => {
     if (userDoc.exists()) {
       const userData = userDoc.data();
       let newCart = userData.cart ? [...userData.cart] : [];
-      console.log(newCart);
       let itemIndex = newCart.findIndex(
         (item) =>
           item.productId === productId &&

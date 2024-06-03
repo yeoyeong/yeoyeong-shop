@@ -1,6 +1,6 @@
 import { db } from "@src/shared/libs/firebase-config";
-import { CartProduct, colorList } from "@src/shared/store/products.store-type";
-import { doc, getDoc, setDoc, updateDoc } from "firebase/firestore";
+import { CartProduct } from "@src/shared/store/products.store-type";
+import { doc, getDoc, updateDoc } from "firebase/firestore";
 
 interface Props {
   uid: string;

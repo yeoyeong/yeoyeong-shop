@@ -8,9 +8,7 @@ const useCategoryHookTablet = () => {
     link: "",
     title: "",
   });
-  console.log(category);
   useEffect(() => {
-    console.log(categoryData.find((el) => el.title.toLowerCase() === category));
     if (!category)
       setResult(categoryData.find((el) => el.title === "POPULAR")!);
     else

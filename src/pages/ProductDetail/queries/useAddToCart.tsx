@@ -12,7 +12,7 @@ interface Props {
 const useAddtoCart = ({ uid, productId, size, color }: Props) => {
   const queryClient = useQueryClient();
   const mutation = useMutation(addToCartApi, {
-    onSuccess: (data) => {
+    onSuccess: () => {
       queryClient.invalidateQueries(["user_content"]);
     },
     onError: (error: Error) => {
